@@ -58,7 +58,7 @@ Feature: Creating the User Using BDD
  Step definitions act as the glue between features files and the actual system under test.When Cucumber executes a Gherkin step in a scenario, it will look for a matching step definition to execute. So, now when Cucumber executes a step of the scenario mentioned in the feature file, it scans the step definition file and figures out which function is to be called.
  
  ### Testrunner
- This dsalgo project is run by Testrunner file. The test runner file should contain the path of the feature file and step definition file that we want to execute.
+ This LMS project is run by Testrunner file. The test runner file should contain the path of the feature file and step definition file that we want to execute.
  Right click the feature file and select "Run" or "Debug" to start the test.
 Features will run in order :
 1. PostProgram.feature
