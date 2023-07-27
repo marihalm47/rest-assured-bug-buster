@@ -32,6 +32,11 @@ flowchart TD
     resources-->config
     resources-->Exceldata
     resources-->features
+    features-->program
+    features-->batch
+    features-->user
+    features-->assignment
+    features-->assignment submission
     resources-->log4j
  ```
  ## Struture of Project
@@ -40,17 +45,14 @@ flowchart TD
  A feature file is a file that lets you describe software’s behavior without detailing how that behavior is implemented. Feature files are written using the
  Gherkin language and must live in a folder named features within the root of your project.For Ex:
  ```
-# ./features/sigin.feature
+# ./features/Programpost.feature
 
-Feature: User to sigin 
+Feature: Creating the User Using BDD 
 
-  Scenario: User SignIn into Project
-    Given User is in sigin page 
-    When  User Enters Username valid Userid
-    And   User Enters Password valid password
-    And   User clicks on sigin button 
-    Then  User Redirect to home Page
-
+  Scenario: Creation of a program with valid endpoint and request body using Data Driven
+    Given User sends request for Program module with valid request body
+    When  User sends POST request data from "<SheetName>" and "<Testcase>"
+    Then  User sucessfully receives status code "201" with reponse body
 ```
  ### Step Definition
  Step definitions act as the glue between features files and the actual system under test.When Cucumber executes a Gherkin step in a scenario, it will look for a matching step definition to execute. So, now when Cucumber executes a step of the scenario mentioned in the feature file, it scans the step definition file and figures out which function is to be called.
@@ -59,15 +61,29 @@ Feature: User to sigin
  This dsalgo project is run by Testrunner file. The test runner file should contain the path of the feature file and step definition file that we want to execute.
  Right click the feature file and select "Run" or "Debug" to start the test.
 Features will run in order :
-1. Home.feature
-2. Register.feature
-3. Signin.feature
-4. Array.feature
-5. LinkedList.feature
-6. Stack.feature
-7. Queue.feature
-8. Tree.feature
-9. Graph.feature
+1. PostProgram.feature
+2. PostBatch.feature
+3. PostUser.feature
+4. PostAssignment.feature
+5. PostAssignmentSubmit.feature
+6. GetProgram.feature
+7. GetProgram.feature
+8. GetBatch.feature
+9. GetUser.feature
+10. GetAssignment.feature
+11. Getassignmentsubmit.feature
+12. GetUser.feature
+13. Putprogram.feature
+14. Putbatch.feature
+15. PutUser.feature
+16. Delassignsubmit.feature
+17. Delassignment.feayure
+18. Del_user.feature
+19. Delbatch.feature
+20. DelProgram.feature
+
+       
+       
 
 ## Reporting
 Once tests complete run reports are generated. This framework uses different types of test reporters to communicate pass/failure.
@@ -91,11 +107,6 @@ Log4j in selenium is one such logging framework that helps in gathering informat
 ## Develop automation scripts using BDD approach - Cucumber-Java :
 Tests are written in the Cucumber framework using the Gherkin Syntax. More about Gherkin & Cucumber can be found at [https://cucumber.io/docs/reference] 
 
-## The Page Object Design Pattern (Selenium PageFactory) :
-Page Object Model, also known as POM, is a design pattern,that creates an object repository for storing all web elements. It helps reduce code duplication and improves test case maintenance.
-Page Object Model using Page Factory is implemented in Selenium automation frameworks. It helps in maintaining the test scripts by separating the test objects from the test scripts.
-When A test fails due to selector that is no longer valid/have changed, and that selector may be used by many other steps.
-By having all selectors at single place, fixing one selector on the page object could repair a number of failing tests that were affected by the same selector
 
 ## Data Driven Selenium Cucumber:
 In our project we used Data driven methodology.Data driven testing means passing data with the help of  external sources like xls,xlsx,csv files., etc. In this we are taking inputs from external source.
